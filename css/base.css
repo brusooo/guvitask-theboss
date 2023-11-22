@@ -1,0 +1,73 @@
+@font-face {
+  font-family: "roboto-medium";
+  src: url(".././fonts/Roboto-Medium.ttf");
+}
+
+@font-face {
+  font-family: "roboto-bold";
+  src: url(".././fonts/Roboto-Bold.ttf");
+}
+
+@font-face {
+  font-family: "roboto-black";
+  src: url(".././fonts/Roboto-Black.ttf");
+}
+
+@font-face {
+  font-family: "roboto-mono";
+  src: url(".././fonts/RobotoMono.ttf");
+}
+
+:root {
+  /* ! theme colors */
+  --theme-background: #ffffff;
+  --theme-color: #000000;
+  --theme-variant: #00b4d8;
+  --input-bg: #e9ecef;
+
+  /* * wanring msg color */
+
+  --warning-msg-bg: #f6cacc;
+  --warning-msg-color: #a94442;
+  --warning-msg-border: #ec8385;
+
+  /* ! success message color */
+  --success-msg-bg: #b7efc5;
+  --success-msg-color: #137547;
+  --success-msg-border: #92e6a7;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* ! theme colors */
+    --theme-background: #212529;
+    --theme-color: #ffffff;
+    --theme-variant: #70e000;
+    --input-bg: #ffffff;
+
+    /* * wanring msg color */
+
+    --warning-msg-bg: #f6cacc;
+    --warning-msg-color: #a94442;
+    --warning-msg-border: #ec8385;
+
+    /* ! success message color */
+    --success-msg-bg: #b7efc5;
+    --success-msg-color: #137547;
+    --success-msg-border: #4ad66d;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--theme-background);
+  padding-top: 100px;
+  box-sizing: border-box;
+}

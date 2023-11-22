@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/register.css" />
+    <title>Login - Theboss</title>
+  </head>
+  <body>
+    <div class="authentication_card_login">
+      <h1>CONNECT <br />YOUR ACCOUNT</h1>
+      <!-- a divider to divide the heading and form -->
+      <div class="dot_row">
+        <div class="line line_start"></div>
+        <div class="circle"></div>
+        <div class="line line_end"></div>
+      </div>
+      <!-- form to enter the user details -->
+      <form class="sign_in_form">
+        <!-- holder to show warning messages/ successful messages -->
+        <h4 class="info_msg_login"></h4>
+
+        <!-- user can enter username or email -->
+        <input
+          placeholder="username or email"
+          type="text"
+          name="username_email_login"
+          id="username_email_login"
+          min="6"
+          max="20"
+        />
+
+        <!-- user password to login -->
+        <input
+          placeholder="password"
+          type="password"
+          name="user_password_login"
+          id="user_password_login"
+          min="6"
+          max="10"
+        />
+        <!-- navigation to registration page -->
+        <div class="signup_link">
+          <h3>Don't have an account <a href="register.html">Signup</a></h3>
+          <button class="submit_credentials_login" type="submit">LOGIN</button>
+        </div>
+      </form>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="./js/login.js" defer></script>
+  </body>
+</html>

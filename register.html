@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/register.css" />
+    
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="authentication_card_register">
+      <h1>CREATE <br />YOUR ACCOUNT</h1>
+      <!-- a divider to divide the heading and form -->
+      <div class="dot_row">
+        <div class="line line_start"></div>
+        <div class="circle"></div>
+        <div class="line line_end"></div>
+      </div>
+      <!-- form to enter the user details -->
+      <form class="sign_up_form">
+        <!-- holder to show warning messages/ successful messages -->
+        <h4 class="info_msg_register"></h4>
+        
+        <!-- username -->
+        <input
+          placeholder="username"
+          type="text"
+          name="username"
+          id="username"
+          min="6"
+          max="20"
+        />
+        <!-- emailid -->
+        <input
+          placeholder="email"
+          type="text"
+          name="register_email"
+          id="register_email"
+          min="6"
+          max="20"
+        />
+        <!-- password -->
+        <input
+          placeholder="password"
+          type="password"
+          name="user_password_register"
+          id="user_password_register"
+          min="6"
+          max="10"
+        />
+        <!-- confirm password -->
+        <input
+          placeholder="confirm password"
+          type="password"
+          name="confirm_password_register"
+          id="confirm_password_register"
+          min="6"
+          max="10"
+        />
+        <!-- navigation to login page -->
+        <div class="login_link">
+          <h3>Already have an account <a href="login.html">login</a></h3>
+          <button class="submit_credentials_register" type="submit">
+            SIGN UP
+          </button>
+        </div>
+      </form>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="./js/register.js" defer></script>
+    
+  </body>
+</html>

@@ -1,0 +1,42 @@
+@import "./base.css";
+
+.container,
+.web_title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  gap: 30px;
+}
+
+.web_title .web_page_name {
+  font-family: "Roboto-Black";
+  color: var(--theme-variant);
+  font-size: 100px;
+  text-transform: uppercase;
+}
+
+.web_title .web_underline {
+  position: relative;
+  width: 50%;
+  background-color: var(--theme-color);
+  height: 2px;
+  border-radius: 50%;
+}
+
+.container .authentication_navigator {
+  display: flex;
+  gap: 20px;
+}
+
+.container .authentication_navigator a {
+  text-decoration: none;
+  background-color: var(--theme-color);
+  padding: 20px;
+  color: var(--theme-background-color);
+  font-family: "roboto-mono";
+  cursor: pointer;
+}
