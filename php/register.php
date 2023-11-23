@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
 
         // //*mongodb connection
-        $mongoClient = new MongoDB\Client("mongodb+srv://brusooo:brusooo@cluster0.bcpu8.mongodb.net/?retryWrites=true&w=majority");
+        $mongoClient = new MongoDB\Client("mongodb+srv://<username>:<password>@cluster0.bcpu8.mongodb.net/?retryWrites=true&w=majority");
         $mongoDB = $mongoClient->theboss;
         $mongoCollection = $mongoDB->userscollection;
 

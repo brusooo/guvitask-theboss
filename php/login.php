@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             // ! Updating the MongoDB document with the access token
             require '.././mongodb/autoload.php';
-            $mongoClient = new MongoDB\Client("mongodb+srv://brusooo:brusooo@cluster0.bcpu8.mongodb.net/?retryWrites=true&w=majority");
+            $mongoClient = new MongoDB\Client("mongodb+srv://<username>:<password>@cluster0.bcpu8.mongodb.net/?retryWrites=true&w=majority");
             $mongoDB = $mongoClient->theboss;
             $mongoCollection = $mongoDB->userscollection;
 

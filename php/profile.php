@@ -4,7 +4,7 @@ require '.././mongodb/autoload.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
     // ! Database connection
-    $mongoClient = new MongoDB\Client("mongodb+srv://brusooo:brusooo@cluster0.bcpu8.mongodb.net/?retryWrites=true&w=majority");
+    $mongoClient = new MongoDB\Client("mongodb+srv://<username>:<password>@cluster0.bcpu8.mongodb.net/?retryWrites=true&w=majority");
     $mongoDB = $mongoClient->theboss;
     $mongoCollection = $mongoDB->userscollection;
 
@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     $accessToken = $_POST["access_token"];
 
     // ! Fetching MongoDB details
-    $mongoClient = new MongoDB\Client("mongodb+srv://brusooo:brusooo@cluster0.bcpu8.mongodb.net/?retryWrites=true&w=majority");
+    $mongoClient = new MongoDB\Client("mongodb+srv://<username>:<password>@cluster0.bcpu8.mongodb.net/?retryWrites=true&w=majority");
     $mongoDB = $mongoClient->theboss;
     $mongoCollection = $mongoDB->userscollection;
 
