@@ -2,9 +2,9 @@
 
 The Boss is a web application that provides user registration, login, and profile functionalities in both `dark` and `light` theme (system default ).
 
-![](./assets/index/index_dark.png)
+![index_dark](./assets/index/index_dark.png)
 
-![](./assets/index/index_light.png)
+![index_light](./assets/index/index_light.png)
 
 ## Technologies Used
 
@@ -24,13 +24,13 @@ To register a new user, the following steps are taken:
   - Hash the password using PHP's `password_hash` function.
   - Store user information in the MySQL as well as MongoDB database.
 
-  ![](./assets/registration/dark_register.png)
+  ![dark_register](./assets/registration/dark_register.png)
 
-  ![](./assets/registration/dark_register_success.png)
+  ![dark_register_success](./assets/registration/dark_register_success.png)
 
-  ![](./assets/registration/register_mysql.png)
+  ![register_mysql](./assets/registration/register_mysql.png)
 
-  ![](./assets/registration/register_mongodb.png)
+  ![register_mongodb](./assets/registration/register_mongodb.png)
 
 ### 2. USER LOGIN
 
@@ -44,9 +44,9 @@ Users can log in to the application using the following process:
   - Verify the password using PHP's `password_verify` function.
   - If authentication is successful, generate an access token, store it in MongoDB, and return it to the client. The access token ( random string ) will be stored in redis and username will be stored in `localstorage`
 
-    ![](./assets/login/light_login.png)
+    ![light_login](./assets/login/light_login.png)
 
-    ![](./assets/login/login_redis.png)
+    ![login_redis](./assets/login/login_redis.png)
 
 ### 3. USER PROFILE
 
@@ -59,11 +59,11 @@ The user profile page displays the user's details:
   - If the token is valid, fetch the user's details from MongoDB.
   - Display the user's details on the profile page.
 
-![](./assets/profile/profile_before_update.png)
+![profile_before_update](./assets/profile/profile_before_update.png)
 
-![](./assets/profile/profile_after_update.png)
+![profile_after_update](./assets/profile/profile_after_update.png)
 
-![](./assets/profile/profile_mongodb.png)
+![profile_mongodb](./assets/profile/profile_mongodb.png)
 
 ### 4. SESSION MANAGEMENT WITH REDIS
 
@@ -73,12 +73,12 @@ The user profile page displays the user's details:
 
 ### before logging out
 
-![](./assets/profile/logout/localstorage_before.png)
+![localstorage_before](./assets/profile/logout/localstorage_before.png)
 
-![](./assets/profile/logout/redis_before_logout.png)
+![redis_before_logout](./assets/profile/logout/redis_before_logout.png)
 
 ### after logging out
 
-![](./assets/profile/logout/localstorage_after.png)
+![localstorage_after](./assets/profile/logout/localstorage_after.png)
 
-![](./assets/profile/logout/redis_after_logout.png)
+![redis_after_logout](./assets/profile/logout/redis_after_logout.png)
