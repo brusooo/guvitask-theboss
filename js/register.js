@@ -1,24 +1,7 @@
-$(document).ready(function () {
-  const loader = $(".loader");
-  const auth_card = $(".authentication_card_register");
-  const accessToken = localStorage.getItem("access_token");
-  const tokenExpires = localStorage.getItem("token_expires");
+import { handleAuth, displaySuccInfo, displayWarnInfo } from "./utils.js";
 
-  // Check if access token is present in localStorage and not expired
-  if (
-    accessToken &&
-    tokenExpires &&
-    parseInt(tokenExpires) > Date.now() / 1000
-  ) {
-    // User is logged in, redirect to profile page
-    window.location.href = "profile.html";
-  } else {
-    // Access token is expired or not present, remove localStorage data
-    localStorage.removeItem("access_token");
-    localStorage.removeItem("token_expires");
-    auth_card.show();
-    loader.hide();
-  }
+$(document).ready(function () {
+  handleAuth(".authentication_card_register");
 });
 
 $(".submit_credentials_register").click(function (event) {
@@ -37,27 +20,27 @@ $(".submit_credentials_register").click(function (event) {
   // ! Validating all user inputs
   switch (true) {
     case !$username.val():
-      displayInfo("Username is required❗.");
+      displayWarnInfo("Username is required❗.");
       break;
 
     case !$email.val():
-      displayInfo("Email is required❗.");
+      displayWarnInfo("Email is required❗.");
       break;
 
     case !isValidEmail($email.val()):
-      displayInfo("Enter a valid email address❗.");
+      displayWarnInfo("Enter a valid email address❗.");
       break;
 
     case !$password.val():
-      displayInfo("Password is required❗.");
+      displayWarnInfo("Password is required❗.");
       break;
 
     case $password.val().length < 6 || $password.val().length > 12:
-      displayInfo("Password must be 6 to 12 characters in length❗.");
+      displayWarnInfo("Password must be 6 to 12 characters in length❗.");
       break;
 
     case $password.val() !== $confirmPassword.val():
-      displayInfo("Passwords didn't match❗.");
+      displayWarnInfo("Passwords didn't match❗.");
       break;
 
     default:
@@ -65,12 +48,6 @@ $(".submit_credentials_register").click(function (event) {
       sendAjaxRequest();
   }
 });
-
-// ! Function to display information messages
-function displayInfo(message) {
-  const $infoMsg = $(".info_msg");
-  $infoMsg.addClass("warning_message").text(message).show();
-}
 
 // ! Function to validate email format
 function isValidEmail(email) {
@@ -108,25 +85,15 @@ function sendAjaxRequest() {
         $cnf_pwd.val("");
 
         // ! display successfull message to the user
-        $infoMsg
-          .removeClass("warning_message")
-          .addClass("success_message")
-          .text(response.message)
-          .show();
-
-        // ! hiding the success message after 3s
-        setTimeout(function () {
-          $infoMsg.hide().removeClass("success_message").text("");
-        }, 3000);
+        displaySuccInfo(response.message);
       } else {
         // * warning message if any error occurs
-        $infoMsg.addClass("warning_message").text(response.message);
+        displayWarnInfo(response.message);
       }
     },
     error: function (error) {
       // * warning message if any error occurs
-      const $infoMsg = $(".info_msg");
-      $infoMsg.addClass("warning_message").text("Oops❗Error Occurred.");
+      displayWarnInfo("Oops❗Error Occurred.");
     },
   });
 }

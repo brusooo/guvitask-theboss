@@ -3,14 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./css/register.css" />
-    <title>Document</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="./css/register.css" />
+    <link rel="shortcut icon" href="./assets/theboss.png" type="image/x-icon" />
+    <title>Register - The Boss</title>
   </head>
   <body>
     <div class="loader">
@@ -29,16 +30,21 @@
     </div>
 
     <div class="authentication_card_register">
-      <h1>CREATE <br />YOUR ACCOUNT</h1>
-      <!-- a divider to divide the heading and form -->
-      <div class="dot_row">
-        <div class="line line_start"></div>
-        <div class="circle"></div>
-        <div class="line line_end"></div>
+      <div class="header-box">
+        <h3>CREATE <br />YOUR ACCOUNT</h3>
+        <!-- a divider to divide the heading and form -->
+        <div class="dot_row">
+          <div class="line line_start"></div>
+          <div class="circle"></div>
+          <div class="line line_end"></div>
+        </div>
       </div>
       <!-- holder to show warning messages/ successful messages -->
-      <h4 class="info_msg"></h4>
+       <div class="info_msg_holder">
+        <h4 class="info_msg "></h4>
+      </div>
 
+      
       <!-- form to enter the user details -->
       <form class="sign_up_form">
         <!-- username -->
@@ -88,6 +94,6 @@
       crossorigin="anonymous"
     ></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="./js/register.js" defer></script>
+    <script src="./js/register.js" type="module" defer></script>
   </body>
 </html>

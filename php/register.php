@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $checkUserStmt->bind_result($existingUsername, $existingEmail);
         $checkUserStmt->fetch();
 
-        // Check which field is already taken
+        // ! Check whether user exists in database
         if ($existingUsername == $username) {
             echo json_encode(array("status" => "error", "message" => "❌ Username already taken"));
         } else {
@@ -57,7 +57,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
         // * Check results and respond accordingly
 
-        // if ($mysqlResult) {
         if ($mysqlResult && $mongoResult) {
             // * if the user details is stored successfully
             echo json_encode(array("status" => "success", "message" => "🎉 Registration successful"));

@@ -4,6 +4,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     // * Database connection
     $conn = require_once("db.php");
+    $redis = require_once("redis.php");
     
     // * Login data from the client
     $usernameEmail = $_POST["usernameEmail"];
@@ -26,25 +27,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             
             $accessToken = bin2hex(random_bytes(32));
 
-            // Store access token and expiration time in the database
-            $expirationTime = time() + (60 * 60); // Expire in 1 hour
-        
-            // Update the MongoDB document with the access token
+            // ! Updating the MongoDB document with the access token
             require '.././mongodb/autoload.php';
             $mongoClient = new MongoDB\Client("mongodb+srv://brusooo:brusooo@cluster0.bcpu8.mongodb.net/?retryWrites=true&w=majority");
             $mongoDB = $mongoClient->theboss;
             $mongoCollection = $mongoDB->userscollection;
 
-            // Update the document where the username matches
+            //  ! Update the document where the username matches
             $filter = ['username' => $existingUsername];
             $update = ['$set' => ['access_token' => $accessToken]];
             $result = $mongoCollection->updateOne($filter, $update);
 
+            // ! Setting the user key in Redis example user:sample -> jou02t-2ejpjeg2p
+            $redisKey = 'user:' . $existingUsername;
+
+            // ! Set the key in Redis with a 2-hour expiration time (7200 seconds)
+            $redis->setex($redisKey, 7200, $accessToken);
+            
             if ($result->getModifiedCount() > 0) {
-                // Update successful
-                echo json_encode(array("authenticated" => true, "access_token" => $accessToken, "expires_in" => $expirationTime));
+                // * Update successful
+                echo json_encode(array("authenticated" => true, "username" => $existingUsername));
             } else {
-                // Update failed
+                // * Update failed
                 echo json_encode(array("authenticated" => false, "message" => "❌ Error updating access token"));
             }
         

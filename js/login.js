@@ -1,24 +1,6 @@
+import { handleAuth, displaySuccInfo, displayWarnInfo } from "./utils.js";
 $(document).ready(function () {
-  const loader = $(".loader");
-  const auth_card = $(".authentication_card_login");
-  const accessToken = localStorage.getItem("access_token");
-  const tokenExpires = localStorage.getItem("token_expires");
-
-  // Check if access token is present in localStorage and not expired
-  if (
-    accessToken &&
-    tokenExpires &&
-    parseInt(tokenExpires) > Date.now() / 1000
-  ) {
-    // User is logged in, redirect to profile page
-    window.location.href = "profile.html";
-  } else {
-    // Access token is expired or not present, remove localStorage data
-    localStorage.removeItem("access_token");
-    localStorage.removeItem("token_expires");
-    auth_card.show();
-    loader.hide();
-  }
+  handleAuth(".authentication_card_login");
 });
 
 $(".submit_credentials_login").click(function (event) {
@@ -33,17 +15,13 @@ $(".submit_credentials_login").click(function (event) {
 
   // ! Validating inputs
   if (!usernameEmail || !password) {
-    displayInfo("Both fields are required❗");
+    displayWarnInfo("Both fields are required❗");
   } else {
     // ! If all validations pass, send the AJAX request to server
     sendLoginRequest(usernameEmail, password);
   }
 });
 
-// ! Function to display information messages
-function displayInfo(message) {
-  $(".info_msg").addClass("warning_message").text(message).show();
-}
 
 // ! AJAX request to server(login)
 function sendLoginRequest(usernameEmail, password) {
@@ -55,22 +33,19 @@ function sendLoginRequest(usernameEmail, password) {
       password: password,
     },
     success: function (res) {
-      console.log(res);
       const response = JSON.parse(res);
 
       // * if user gets authenticated, they will navigated to
       // * profile page
       if (response.authenticated) {
-        localStorage.setItem("access_token", response.access_token);
-        localStorage.setItem("token_expires", response.expires_in);
-        $(".info_msg").removeClass("warning_message").hide();
+        localStorage.setItem("username", response.username);
         window.location.href = "profile.html";
       } else {
-        displayInfo("Invalid credentials❗");
+        displayWarnInfo("Invalid credentials❗");
       }
     },
     error: function (error) {
-      displayInfo("Oops❗ Error occurred");
+      displayWarnInfo("Oops❗ Error occurred");
     },
   });
 }

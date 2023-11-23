@@ -20,21 +20,24 @@
 
 :root {
   /* ! theme colors */
-  --theme-background: #ffffff;
+  --theme-background: #FFFFFF;
   --theme-color: #000000;
-  --theme-variant: #00b4d8;
+  --theme-variant: #ff4d6d;
   --input-bg: #e9ecef;
-
+  --index-box : #ff8fa3;
+  
   /* * wanring msg color */
 
   --warning-msg-bg: #f6cacc;
   --warning-msg-color: #a94442;
   --warning-msg-border: #ec8385;
-
+  
   /* ! success message color */
   --success-msg-bg: #b7efc5;
   --success-msg-color: #137547;
   --success-msg-border: #92e6a7;
+
+  --theme-input: 128, 128, 128, 0.1;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -44,7 +47,8 @@
     --theme-color: #ffffff;
     --theme-variant: #70e000;
     --input-bg: #ffffff;
-
+    --index-box : #ffffff;
+    
     /* * wanring msg color */
 
     --warning-msg-bg: #f6cacc;
@@ -55,6 +59,7 @@
     --success-msg-bg: #b7efc5;
     --success-msg-color: #137547;
     --success-msg-border: #4ad66d;
+    --theme-input: 255, 255, 255, 1;
   }
 }
 
@@ -68,8 +73,15 @@ body {
   justify-content: center;
   align-items: center;
   background-color: var(--theme-background);
-  padding-top: 100px;
+  min-height: 100vh;
   box-sizing: border-box;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/*? Hide scrollbar for Chrome, Safari and Opera */
+body::-webkit-scrollbar {
+  display: none;
 }
 
 /* ! divider between form and the header */
@@ -98,17 +110,22 @@ body {
 }
 
 /* * warning message */
+.info_msg_holder {
+  position: relative;
+  width: 100%;
+  padding: 10px;
+}
 .info_msg {
   position: relative;
   width: 100%;
-  padding: 7px 10px;
-  margin: 10px 0px;
+  padding: 7px;
   border-radius: 5px;
   display: none;
   font-family: "roboto-mono";
   font-size: 10px;
 }
 .warning_message {
+  padding: 10px;
   background-color: var(--warning-msg-bg);
   border: 2px dashed var(--warning-msg-border);
   color: var(--warning-msg-color);
@@ -121,9 +138,8 @@ body {
 }
 
 input[disabled] {
-  color: rgb(128, 128, 128);
+  color: rgba(128,128,128,0.6);
 }
-
 
 /*  ? loader */
 .loader {
@@ -136,7 +152,7 @@ input[disabled] {
 .loader > div {
   width: 6%;
   height: 18%;
-  background: rgb(128, 128, 128);
+  background: var(--theme-color);
   position: absolute;
   left: 60%;
   top: 30%;
