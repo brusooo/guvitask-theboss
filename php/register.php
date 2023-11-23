@@ -1,5 +1,5 @@
 <?php
-// require '.././mongodb/autoload.php';
+require '.././mongodb/autoload.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
@@ -31,20 +31,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
 
         // //*mongodb connection
-        // $mongoClient = new MongoDB\Client("mongodb+srv://brusooo:brusooo@cluster0.bcpu8.mongodb.net/?retryWrites=true&w=majority");
-        // $mongoDB = $mongoClient->theboss;
-        // $mongoCollection = $mongoDB->userscollection;
-
-        // // * MongoDB document
-        // $document = [
-        //     'username' => $username,
-        //     'email' => $email,
-        //     'password' => $password,
-        // ];
+        $mongoClient = new MongoDB\Client("mongodb+srv://brusooo:brusooo@cluster0.bcpu8.mongodb.net/?retryWrites=true&w=majority");
+        $mongoDB = $mongoClient->theboss;
+        $mongoCollection = $mongoDB->userscollection;
 
         
+        
         // * Hash the password
-        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+        $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
+        
+        // * MongoDB document
+        $document = [
+            'username' => $username,
+            'email' => $email,
+            'password' => $hashedPassword,
+        ];
         
         // * storing user details in the database and binding
         $stmt = $conn->prepare("INSERT INTO users(username, email, password) VALUES (?, ?, ?)");
@@ -52,12 +53,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
         // ! Statements execution
         $mysqlResult = $stmt->execute();
-        // $mongoResult = $mongoCollection->insertOne($document);
+        $mongoResult = $mongoCollection->insertOne($document);
         
         // * Check results and respond accordingly
 
-        if ($mysqlResult) {
-        // if ($mysqlResult && $mongoResult) {
+        // if ($mysqlResult) {
+        if ($mysqlResult && $mongoResult) {
             // * if the user details is stored successfully
             echo json_encode(array("status" => "success", "message" => "🎉 Registration successful"));
         } else {

@@ -12,6 +12,7 @@
   background: var(--theme-background);
   border: 3px solid var(--theme-color);
   padding: 5px;
+  display: none;
 }
 
 /* ! form header */
@@ -21,59 +22,6 @@
   text-align: center;
   padding: 20px;
   font-family: "roboto-black";
-}
-/* ! divider between form and the header */
-.authentication_card_register .dot_row,
-.authentication_card_login .dot_row {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.authentication_card_register .dot_row > .line,
-.authentication_card_login .dot_row > .line {
-  position: relative;
-  border-top: 2px solid var(--theme-color);
-  opacity: 50%;
-  width: 30%;
-  height: 2px;
-}
-
-.authentication_card_register .dot_row > .circle,
-.authentication_card_login .dot_row > .circle {
-  position: relative;
-  width: 10px;
-  height: 10px;
-  margin: 0px 3px;
-  background-color: var(--theme-color);
-  border-radius: 50%;
-  opacity: 20%;
-}
-
-/* * warning message */
-.authentication_card_register .info_msg_register,
-.authentication_card_login .info_msg_login {
-  position: relative;
-  width: 100%;
-  padding: 7px 10px;
-  margin: 10px 0px;
-  border-radius: 5px;
-  display: none;
-  font-family: "roboto-mono";
-  font-size: 10px;
-}
-
-.authentication_card_register .warning_message,
-.authentication_card_login .warning_message {
-  background-color: var(--warning-msg-bg);
-  border: 2px dashed var(--warning-msg-border);
-  color: var(--warning-msg-color);
-}
-.authentication_card_register .success_message,
-.authentication_card_login .success_message {
-  background-color: var(--success-msg-bg);
-  border: 2px dashed var(--success-msg-border);
-  color: var(--success-msg-color);
 }
 
 /* ! form */
@@ -147,3 +95,4 @@
   background-color: var(--theme-variant);
   color: #ffffff;
 }
+

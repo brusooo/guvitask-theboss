@@ -4,10 +4,30 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./css/register.css" />
-    
     <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
   </head>
   <body>
+    <div class="loader">
+      <div class="bar1"></div>
+      <div class="bar2"></div>
+      <div class="bar3"></div>
+      <div class="bar4"></div>
+      <div class="bar5"></div>
+      <div class="bar6"></div>
+      <div class="bar7"></div>
+      <div class="bar8"></div>
+      <div class="bar9"></div>
+      <div class="bar10"></div>
+      <div class="bar11"></div>
+      <div class="bar12"></div>
+    </div>
+
     <div class="authentication_card_register">
       <h1>CREATE <br />YOUR ACCOUNT</h1>
       <!-- a divider to divide the heading and form -->
@@ -16,46 +36,42 @@
         <div class="circle"></div>
         <div class="line line_end"></div>
       </div>
+      <!-- holder to show warning messages/ successful messages -->
+      <h4 class="info_msg"></h4>
+
       <!-- form to enter the user details -->
       <form class="sign_up_form">
-        <!-- holder to show warning messages/ successful messages -->
-        <h4 class="info_msg_register"></h4>
-        
         <!-- username -->
         <input
           placeholder="username"
           type="text"
+          class="form-control"
           name="username"
           id="username"
-          min="6"
-          max="20"
         />
         <!-- emailid -->
         <input
           placeholder="email"
           type="text"
+          class="form-control"
           name="register_email"
           id="register_email"
-          min="6"
-          max="20"
         />
         <!-- password -->
         <input
           placeholder="password"
           type="password"
+          class="form-control"
           name="user_password_register"
           id="user_password_register"
-          min="6"
-          max="10"
         />
         <!-- confirm password -->
         <input
           placeholder="confirm password"
           type="password"
+          class="form-control"
           name="confirm_password_register"
           id="confirm_password_register"
-          min="6"
-          max="10"
         />
         <!-- navigation to login page -->
         <div class="login_link">
@@ -66,8 +82,12 @@
         </div>
       </form>
     </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="./js/register.js" defer></script>
-    
   </body>
 </html>

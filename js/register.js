@@ -1,18 +1,25 @@
 $(document).ready(function () {
+  const loader = $(".loader");
+  const auth_card = $(".authentication_card_register");
   const accessToken = localStorage.getItem("access_token");
   const tokenExpires = localStorage.getItem("token_expires");
 
   // Check if access token is present in localStorage and not expired
-  if (accessToken && tokenExpires && parseInt(tokenExpires) > Date.now() / 1000) {
+  if (
+    accessToken &&
+    tokenExpires &&
+    parseInt(tokenExpires) > Date.now() / 1000
+  ) {
     // User is logged in, redirect to profile page
     window.location.href = "profile.html";
   } else {
     // Access token is expired or not present, remove localStorage data
     localStorage.removeItem("access_token");
     localStorage.removeItem("token_expires");
+    auth_card.show();
+    loader.hide();
   }
 });
-
 
 $(".submit_credentials_register").click(function (event) {
   event.preventDefault();
@@ -22,7 +29,7 @@ $(".submit_credentials_register").click(function (event) {
   const $email = $("#register_email");
   const $password = $("#user_password_register");
   const $confirmPassword = $("#confirm_password_register");
-  const $infoMsg = $(".info_msg_register");
+  const $infoMsg = $(".info_msg");
 
   // ! Clearing previous info messages
   $infoMsg.text("");
@@ -45,6 +52,10 @@ $(".submit_credentials_register").click(function (event) {
       displayInfo("Password is required❗.");
       break;
 
+    case $password.val().length < 6 || $password.val().length > 12:
+      displayInfo("Password must be 6 to 12 characters in length❗.");
+      break;
+
     case $password.val() !== $confirmPassword.val():
       displayInfo("Passwords didn't match❗.");
       break;
@@ -57,7 +68,7 @@ $(".submit_credentials_register").click(function (event) {
 
 // ! Function to display information messages
 function displayInfo(message) {
-  const $infoMsg = $(".info_msg_register");
+  const $infoMsg = $(".info_msg");
   $infoMsg.addClass("warning_message").text(message).show();
 }
 
@@ -87,7 +98,7 @@ function sendAjaxRequest() {
       console.log(res);
       const response = JSON.parse(res);
 
-      const $infoMsg = $(".info_msg_register");
+      const $infoMsg = $(".info_msg");
 
       if (response.status === "success") {
         // ! Clear input fields after successful registration
@@ -114,7 +125,7 @@ function sendAjaxRequest() {
     },
     error: function (error) {
       // * warning message if any error occurs
-      const $infoMsg = $(".info_msg_register");
+      const $infoMsg = $(".info_msg");
       $infoMsg.addClass("warning_message").text("Oops❗Error Occurred.");
     },
   });

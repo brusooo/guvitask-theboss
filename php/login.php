@@ -29,7 +29,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Store access token and expiration time in the database
             $expirationTime = time() + (60 * 60); // Expire in 1 hour
         
-            echo json_encode(array("authenticated" => true, "access_token" => $accessToken, "expires_in" => $expirationTime));
+            // Update the MongoDB document with the access token
+            require '.././mongodb/autoload.php';
+            $mongoClient = new MongoDB\Client("mongodb+srv://brusooo:brusooo@cluster0.bcpu8.mongodb.net/?retryWrites=true&w=majority");
+            $mongoDB = $mongoClient->theboss;
+            $mongoCollection = $mongoDB->userscollection;
+
+            // Update the document where the username matches
+            $filter = ['username' => $existingUsername];
+            $update = ['$set' => ['access_token' => $accessToken]];
+            $result = $mongoCollection->updateOne($filter, $update);
+
+            if ($result->getModifiedCount() > 0) {
+                // Update successful
+                echo json_encode(array("authenticated" => true, "access_token" => $accessToken, "expires_in" => $expirationTime));
+            } else {
+                // Update failed
+                echo json_encode(array("authenticated" => false, "message" => "❌ Error updating access token"));
+            }
         
 
         } else {

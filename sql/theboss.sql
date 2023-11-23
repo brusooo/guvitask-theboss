@@ -4,4 +4,3 @@ CREATE TABLE Users (
     email VARCHAR(50) NOT NULL UNIQUE,
     PRIMARY KEY (username) 
 );
-
