@@ -1,4 +1,4 @@
-# The Boss
+# THE BOSS
 
 The Boss is a web application that provides user registration, login, and profile functionalities in both `dark` and `light` theme (system default ).
 
@@ -13,7 +13,7 @@ The Boss is a web application that provides user registration, login, and profil
 
 ## Features
 
-### 1. User Registration
+### 1. USER REGISTRATION
 
 To register a new user, the following steps are taken:
 
@@ -32,7 +32,7 @@ To register a new user, the following steps are taken:
 
   ![](./assets/registration/register_mongodb.png)
 
-### 2. User Login
+### 2. USER LOGIN
 
 Users can log in to the application using the following process:
 
@@ -48,7 +48,7 @@ Users can log in to the application using the following process:
 
     ![](./assets/login/login_redis.png)
 
-### 3. User Profile
+### 3. USER PROFILE
 
 The user profile page displays the user's details:
 
@@ -65,7 +65,7 @@ The user profile page displays the user's details:
 
 ![](./assets/profile/profile_mongodb.png)
 
-### 4. Session Management with Redis
+### 4. SESSION MANAGEMENT WITH REDIS
 
 - Use Redis to store session information, including the username and access token.
 - When a user logs in, store their access token in Redis with an expiration time.
